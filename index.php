@@ -1,17 +1,10 @@
-
- <?php
-
-
+<?php
 require_once "functions/functions.php";
 get_header();
 get_sidebar();
 
-
  ?>
  
- 
- 
-       
                 <div class="col-md-10 content">
                     <div class="row">
                         <div class="col-md-12 breadcumb_part">

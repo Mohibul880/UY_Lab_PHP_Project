@@ -7,7 +7,7 @@ function get_header(){
 
 function get_sidebar(){
 
-    require_once "includes/sideber.php";
+    require_once "includes/sidebar.php";
 }
 
 function get_footer(){
