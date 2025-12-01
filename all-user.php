@@ -51,47 +51,14 @@ get_sidebar();
                                           <div class="btn-group btn_group_manage" role="group">
                                             <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                                             <ul class="dropdown-menu">
-                                              <li><a class="dropdown-item" href="view-user.html">View</a></li>
-                                              <li><a class="dropdown-item" href="edit-user.html">Edit</a></li>
+                                              <li><a class="dropdown-item" href="view-user.php">View</a></li>
+                                              <li><a class="dropdown-item" href="edit-user.php">Edit</a></li>
                                               <li><a class="dropdown-item" href="#">Delete</a></li>
                                             </ul>
                                           </div>
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td>UYLAB</td>
-                                      <td>01958420252</td>
-                                      <td>uylab.contact@gmail.com</td>
-                                      <td>uylab</td>
-                                      <td>---</td>
-                                      <td>
-                                          <div class="btn-group btn_group_manage" role="group">
-                                            <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                                            <ul class="dropdown-menu">
-                                              <li><a class="dropdown-item" href="#">View</a></li>
-                                              <li><a class="dropdown-item" href="#">Edit</a></li>
-                                              <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                          </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Abir Mahmud</td>
-                                      <td>01711000000</td>
-                                      <td>uylab.abirmahamud@gmail.com</td>
-                                      <td>abir</td>
-                                      <td>---</td>
-                                      <td>
-                                          <div class="btn-group btn_group_manage" role="group">
-                                            <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                                            <ul class="dropdown-menu">
-                                              <li><a class="dropdown-item" href="#">View</a></li>
-                                              <li><a class="dropdown-item" href="#">Edit</a></li>
-                                              <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                          </div>
-                                      </td>
-                                    </tr>
                                   </tbody>
                                 </table>
                               </div>

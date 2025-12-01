@@ -3,6 +3,28 @@ require_once "functions/functions.php";
 get_header();
 get_sidebar();
 
+
+if(!empty($_POST)){
+  $Name = $POST['Name'];
+  $Phone = $POST['Phone'];
+  $Email = $POST['Email'];
+  $User_Name = $POST['User_Name'];
+  
+
+  $insert = "INSERT INTO users (Nmae,Phone,Email,User_Name,)
+               VALUES ('$Name','$Phone','$Email','$User_Name',}";
+
+ $q = mysqli_query($conn,$insert);
+ 
+ if($q)
+{
+  echo "User Registrration Successfull";
+ }else{
+   echo "User Registrration Failed";
+ }
+
+}
+
 ?>
 <div class="col-md-10 content">
     <div class="row">
@@ -17,7 +39,7 @@ get_sidebar();
     </div>
     <div class="row">
         <div class="col-md-12 ">
-            <form method="" action="">
+            <form method="post" action="">
                 <div class="card mb-3">
                   <div class="card-header">
                     <div class="row">
@@ -25,7 +47,7 @@ get_sidebar();
                             <i class="fab fa-gg-circle"></i>User Registration
                         </div>  
                         <div class="col-md-4 card_button_part">
-                            <a href="all-user.html" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All User</a>
+                            <a href="all-user.php" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All User</a>
                         </div>  
                     </div>
                   </div>
@@ -33,31 +55,31 @@ get_sidebar();
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Name<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" id="" name="">
+                          <input type="text" class="form-control form_control" id="" name="Name">
                         </div>
                       </div>
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Phone:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" id="" name="">
+                          <input type="text" class="form-control form_control" id="" name="Phone">
                         </div>
                       </div>
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Email<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="email" class="form-control form_control" id="" name="">
+                          <input type="email" class="form-control form_control" id="" name="Email">
                         </div>
                       </div>
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Username<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" id="" name="">
+                          <input type="text" class="form-control form_control" id="" name="User_Name">
                         </div>
                       </div>
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="password" class="form-control form_control" id="" name="">
+                          <input type="password" class="form-control form_control" id="" name="Password">
                         </div>
                       </div>
                       <div class="row mb-3">
