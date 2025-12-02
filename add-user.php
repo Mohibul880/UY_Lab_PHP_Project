@@ -11,8 +11,8 @@ if(!empty($_POST)){
   $User_Name = $POST['User_Name'];
   
 
-  $insert = "INSERT INTO users (Nmae,Phone,Email,User_Name,)
-               VALUES ('$Name','$Phone','$Email','$User_Name',}";
+  $insert = "INSERT INTO users (Nmae,Phone,Email,User_Name)
+               VALUES ('$Name','$Phone','$Email','$User_Name'}";
 
  $q = mysqli_query($conn,$insert);
  
