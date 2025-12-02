@@ -3,29 +3,30 @@ require_once "functions/functions.php";
 get_header();
 get_sidebar();
 
-
 if(!empty($_POST)){
-  $Name = $POST['Name'];
-  $Phone = $POST['Phone'];
-  $Email = $POST['Email'];
-  $User_Name = $POST['User_Name'];
   
+  $Name       = $_POST['Name'];
+  $Phone      = $_POST['Phone'];
+  $Email      = $_POST['Email'];
+  $User_Name  = $_POST['User_Name'];
+  $Password   = $_POST['Password'];  // ফর্ম থেকে আসবে, কিন্তু ডাটাবেজে যাবে না
 
-  $insert = "INSERT INTO users (Nmae,Phone,Email,User_Name)
-               VALUES ('$Name','$Phone','$Email','$User_Name'}";
+  // ডাটাবেজে PASSWORD বাদ দেওয়া হলো
+  $insert = "INSERT INTO users (Name, Phone, Email, User_Name)
+             VALUES ('$Name', '$Phone', '$Email', '$User_Name')";
 
- $q = mysqli_query($conn,$insert);
+  $q = mysqli_query($conn, $insert);
  
- if($q)
-{
-  echo "User Registrration Successfull";
- }else{
-   echo "User Registrration Failed";
- }
+  if($q){
+      echo "User Registration Successful";
+  }else{
+      echo "User Registration Failed: " . mysqli_error($conn);
+  }
 
 }
 
 ?>
+
 <div class="col-md-10 content">
     <div class="row">
         <div class="col-md-12 breadcumb_part">
@@ -79,7 +80,7 @@ if(!empty($_POST)){
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="password" class="form-control form_control" id="" name="Password">
+                          <input type="password" class="form-control form_control" id="" name="">
                         </div>
                       </div>
                       <div class="row mb-3">
