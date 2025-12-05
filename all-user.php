@@ -44,38 +44,37 @@ get_sidebar();
                       <th>Manage</th>
                   </tr>
               </thead>
-              <tbody>
+           <tbody>
+    <?php
+    $select = "SELECT * FROM users ORDER BY User_Id DESC";
+    $q = mysqli_query($conn, $select);
 
-                  <?php
-                  // Fetching user list
-                  $select = "SELECT * FROM users ORDER BY user_id DESC";
-                  $q = mysqli_query($conn, $select);
+    while ($data = mysqli_fetch_assoc($q)) {
+    ?>
+        <tr>
+            <td><?php echo $data['Name']; ?></td>
+            <td><?php echo $data['Phone']; ?></td>
+            <td><?php echo $data['Email']; ?></td>
+            <td><?php echo $data['User_Name']; ?></td>
+            <td>---</td>
 
-                  while ($data = mysqli_fetch_assoc($q)) {
-                  ?>
-                  <tr>
-                      <td><?php echo $data['user_name']; ?></td>
-                      <td><?php echo $data['user_phone']; ?></td>
-                      <td><?php echo $data['user_email']; ?></td>
-                      <td><?php echo $data['user_username']; ?></td>
-                      <td><?php echo $data['user_role']; ?></td>
+            <td>
+                <div class="btn-group btn_group_manage" role="group">
+                    <button type="button" class="btn btn-sm btn-dark dropdown-toggle" 
+                        data-bs-toggle="dropdown">Manage</button>
 
-                      <td>
-                          <div class="btn-group btn_group_manage" role="group">
-                              <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Manage
-                              </button>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="view-user.php?u=<?php echo $data['user_id']; ?>">View</a></li>
-                                  <li><a class="dropdown-item" href="edit-user.php?u=<?php echo $data['user_id']; ?>">Edit</a></li>
-                                  <li><a class="dropdown-item" href="delete-user.php?u=<?php echo $data['user_id']; ?>">Delete</a></li>
-                              </ul>
-                          </div>
-                      </td>
-                  </tr>
-                  <?php } ?>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="view-user.php?u=<?php echo $data['User_Id']; ?>">View</a></li>
+                        <li><a class="dropdown-item" href="edit-user.php?u=<?php echo $data['User_Id']; ?>">Edit</a></li>
+                        <li><a class="dropdown-item" href="delete-user.php?u=<?php echo $data['User_Id']; ?>">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    <?php } ?>
+</tbody>
 
-              </tbody>
+
           </table>
       </div>
 
