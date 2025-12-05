@@ -7,21 +7,18 @@ $message = ""; // message holder
 
 if(!empty($_POST)){
   
-  $Name       = $_POST['Name'];
-  $Phone      = $_POST['Phone'];
-  $Email      = $_POST['Email'];
-  $User_Name  = $_POST['User_Name'];
-
-  $insert = "INSERT INTO users (Name, Phone, Email, User_Name)
-             VALUES ('$Name', '$Phone', '$Email', '$User_Name')";
+  $user_name       = $_POST['name'];
+  $user_phone      = $_POST['phone'];
+  $user_email      = $_POST['email'];
+  $user_username  = $_POST['user_username'];
+  $user_pass       = $_POST['pass'];
+  $user_cpass       = $_POST['cpass'];
+  $insert = "INSERT INTO users (user_name, user_phone, user_email, user_username,user_pass,user_cpass)
+             VALUES ('$user_name', '$user_phone', '$user_email', '$user_username','$user_pass)";
   
   $q = mysqli_query($conn, $insert);
 
-  if($q){
-      $message = "<div class='alert alert-success'>User Registration Successful</div>";
-  }else{
-      $message = "<div class='alert alert-danger'>User Registration Failed: " . mysqli_error($conn) . "</div>";
-  }
+ 
 }
 ?>
 
@@ -42,6 +39,15 @@ if(!empty($_POST)){
 
     <div class="row">
         <div class="col-md-12 ">
+          <?php
+          if(!empty($user_name)){
+
+          }else{
+            echo "<div class='alert alert-danger' >
+          Plese Enter Your Nmae
+          </div>";
+          }
+          ?>
             <form method="post" action="">
                 <div class="card mb-3">
                   <div class="card-header">
@@ -59,38 +65,38 @@ if(!empty($_POST)){
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Name<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" name="Name">
+                          <input type="text" class="form-control form_control" name="name">
                         </div>
                       </div>
 
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Phone:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" name="Phone">
+                          <input type="text" class="form-control form_control" name="phone">
                         </div>
                       </div>
 
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Email<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="email" class="form-control form_control" name="Email">
+                          <input type="email" class="form-control form_control" name="email">
                         </div>
                       </div>
 
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Username<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" name="User_Name">
+                          <input type="text" class="form-control form_control" name="user_name">
                         </div>
                       </div>
                       <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label> 
                       <div class="col-sm-7"> 
-                        <input type="password" class="form-control form_control" id="" name=""> 
+                        <input type="password" class="form-control form_control" id="" name="pass"> 
                       </div> 
                     </div> 
                     <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Confirm-Password<span class="req_star">*</span>:</label>
                      <div class="col-sm-7"> 
-                      <input type="password" class="form-control form_control" id="" name="">
+                      <input type="password" class="form-control form_control" id="" name="cpass">
                      </div> 
                     </div> 
                      <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">User Role<span class="req_star">*</span>:</label> 
