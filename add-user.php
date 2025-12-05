@@ -83,7 +83,25 @@ if(!empty($_POST)){
                           <input type="text" class="form-control form_control" name="User_Name">
                         </div>
                       </div>
-
+                      <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label> 
+                      <div class="col-sm-7"> 
+                        <input type="password" class="form-control form_control" id="" name=""> 
+                      </div> 
+                    </div> 
+                    <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Confirm-Password<span class="req_star">*</span>:</label>
+                     <div class="col-sm-7"> 
+                      <input type="password" class="form-control form_control" id="" name="">
+                     </div> 
+                    </div> 
+                     <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">User Role<span class="req_star">*</span>:</label> 
+                     <div class="col-sm-4"> <select class="form-control form_control" id="" name=""> 
+                      <option>Select Role</option> <option value="">Superadmin</option> <option value="">Admin</option> </select> 
+                    </div> 
+                  </div> <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Photo:</label> 
+                  <div class="col-sm-4"> <input type="file" class="form-control form_control" id="" name=""> 
+                </div> 
+              </div> 
+            </div>                    
                   </div>
 
                   <div class="card-footer text-center">
