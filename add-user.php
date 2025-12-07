@@ -3,22 +3,62 @@ require_once "functions/functions.php";
 get_header();
 get_sidebar();
 
-$message = ""; // message holder
+$message = ""; 
 
 if(!empty($_POST)){
-  
+
   $user_name       = $_POST['name'];
   $user_phone      = $_POST['phone'];
   $user_email      = $_POST['email'];
-  $user_username  = $_POST['user_username'];
+  $user_username   = $_POST['user_username'];
   $user_pass       = $_POST['pass'];
-  $user_cpass       = $_POST['cpass'];
-  $insert = "INSERT INTO users (user_name, user_phone, user_email, user_username,user_pass,user_cpass)
-             VALUES ('$user_name', '$user_phone', '$user_email', '$user_username','$user_pass)";
-  
-  $q = mysqli_query($conn, $insert);
+  $user_cpass      = $_POST['cpass'];
 
- 
+  // ========================
+  // VALIDATION START
+  // ========================
+  if(!empty($user_name)){
+      if(!empty($user_phone)){
+          if(!empty($user_email)){
+              if(!empty($user_username)){
+                  if(!empty($user_pass)){
+                      if(!empty($user_cpass)){
+                          if($user_pass == $user_cpass){
+
+                              // ========================
+                              // INSERT INTO DATABASE
+                              // ========================
+                              $insert = "INSERT INTO users (user_name, user_phone, user_email, user_username, user_pass, user_cpass)
+                                         VALUES ('$user_name', '$user_phone', '$user_email', '$user_username', '$user_pass', '$user_cpass')";
+
+                              if(mysqli_query($conn, $insert)){
+                                  $message = "<div class='alert alert-success'>Registration Successful!</div>";
+                              }else{
+                                  $message = "<div class='alert alert-danger'>Database Error!</div>";
+                              }
+
+                          }else{
+                              $message = "<div class='alert alert-danger'>Password & Confirm Password do not match!</div>";
+                          }
+                      }else{
+                          $message = "<div class='alert alert-danger'>Please enter your Confirm Password.</div>";
+                      }
+                  }else{
+                      $message = "<div class='alert alert-danger'>Please enter your Password.</div>";
+                  }
+              }else{
+                  $message = "<div class='alert alert-danger'>Please enter your Username.</div>";
+              }
+          }else{
+              $message = "<div class='alert alert-danger'>Please enter your Email.</div>";
+          }
+      }else{
+          $message = "<div class='alert alert-danger'>Please enter your Phone.</div>";
+      }
+  }else{
+      $message = "<div class='alert alert-danger'>Please enter your Name.</div>";
+  }
+
 }
 ?>
 
@@ -34,20 +74,11 @@ if(!empty($_POST)){
         </div>
     </div>
 
-    <!-- SHOW MESSAGE HERE -->
+    <!-- SHOW MESSAGE -->
     <?php echo $message; ?>
 
     <div class="row">
-        <div class="col-md-12 ">
-          <?php
-          if(!empty($user_name)){
-
-          }else{
-            echo "<div class='alert alert-danger' >
-          Plese Enter Your Nmae
-          </div>";
-          }
-          ?>
+        <div class="col-md-12">
             <form method="post" action="">
                 <div class="card mb-3">
                   <div class="card-header">
@@ -60,6 +91,7 @@ if(!empty($_POST)){
                         </div>  
                     </div>
                   </div>
+
                   <div class="card-body">
                       
                       <div class="row mb-3">
@@ -86,28 +118,43 @@ if(!empty($_POST)){
                       <div class="row mb-3">
                         <label class="col-sm-3 col-form-label col_form_label">Username<span class="req_star">*</span>:</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control form_control" name="user_name">
+                          <input type="text" class="form-control form_control" name="user_username">
                         </div>
                       </div>
-                      <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label> 
-                      <div class="col-sm-7"> 
-                        <input type="password" class="form-control form_control" id="" name="pass"> 
-                      </div> 
-                    </div> 
-                    <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Confirm-Password<span class="req_star">*</span>:</label>
-                     <div class="col-sm-7"> 
-                      <input type="password" class="form-control form_control" id="" name="cpass">
-                     </div> 
-                    </div> 
-                     <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">User Role<span class="req_star">*</span>:</label> 
-                     <div class="col-sm-4"> <select class="form-control form_control" id="" name=""> 
-                      <option>Select Role</option> <option value="">Superadmin</option> <option value="">Admin</option> </select> 
-                    </div> 
-                  </div> <div class="row mb-3"> <label class="col-sm-3 col-form-label col_form_label">Photo:</label> 
-                  <div class="col-sm-4"> <input type="file" class="form-control form_control" id="" name=""> 
-                </div> 
-              </div> 
-            </div>                    
+
+                      <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label col_form_label">Password<span class="req_star">*</span>:</label>
+                        <div class="col-sm-7">
+                          <input type="password" class="form-control form_control" name="pass">
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label col_form_label">Confirm Password<span class="req_star">*</span>:</label>
+                        <div class="col-sm-7">
+                          <input type="password" class="form-control form_control" name="cpass">
+                        </div>
+                      </div>
+
+                      <!-- DO NOT EDIT THESE -->
+                      <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label col_form_label">User Role<span class="req_star">*</span>:</label>
+                        <div class="col-sm-4">
+                          <select class="form-control form_control" name="">
+                            <option>Select Role</option>
+                            <option value="">Superadmin</option>
+                            <option value="">Admin</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label col_form_label">Photo:</label>
+                        <div class="col-sm-4">
+                          <input type="file" class="form-control form_control" name="">
+                        </div>
+                      </div>
+
                   </div>
 
                   <div class="card-footer text-center">
