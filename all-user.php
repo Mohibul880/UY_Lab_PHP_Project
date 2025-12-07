@@ -15,7 +15,14 @@ get_sidebar();
             </div>
         </div>
     </div>
-
+        <?php
+    session_start(); // Always start the session
+    if (isset($_SESSION['success'])) {
+        echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
+        // Optional: unset the session variable to display the message only once
+        unset($_SESSION['success_message']);
+    }
+    ?>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-3">

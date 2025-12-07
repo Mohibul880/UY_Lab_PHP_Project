@@ -46,6 +46,7 @@ if(!empty($_POST)){
         if(mysqli_query($conn, $insert)){
             $_SESSION['success'] = "Registration Successful!";
             header("Location: all-user.php");
+            $_SESSION['success'] = "User Register Successfull!";
             exit();
         }else{
             $message = "<div class='alert alert-danger'>Database Error: ".mysqli_error($conn)."</div>";
