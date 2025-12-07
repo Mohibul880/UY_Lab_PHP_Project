@@ -15,3 +15,11 @@ function get_footer(){
 }
 
 ?>
+
+<?php
+$conn = mysqli_connect("localhost", "root", "", "uy_lab_php-project");
+
+if(!$conn){
+    die("Database Connection Failed!");
+}
+?>
