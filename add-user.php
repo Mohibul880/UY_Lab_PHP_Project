@@ -1,8 +1,8 @@
-<?php
+<?php 
 require_once "functions/functions.php";
 get_header();
 get_sidebar();
-session_start(); // session start for messages
+
 
 $message = "";
 
@@ -13,8 +13,9 @@ if(!empty($_POST)){
     $user_phone    = trim($_POST['phone']);
     $user_email    = trim($_POST['email']);
     $user_username = trim($_POST['user_username']);
-    $user_pass     = trim($_POST['pass']);
-    $user_cpass    = trim($_POST['cpass']);
+    $user_pass  = md5(trim($_POST['pass']));
+    $user_cpass = md5(trim($_POST['cpass']));
+    $user_role    = trim( $_POST['role']);
 
     // VALIDATION
     if(empty($user_name)){
@@ -40,13 +41,14 @@ if(!empty($_POST)){
         $enc_pass = password_hash($user_pass, PASSWORD_DEFAULT);
 
         // INSERT Query
-        $insert = "INSERT INTO users (user_name, user_phone, user_email, user_username, user_pass)
-                   VALUES ('$user_name', '$user_phone', '$user_email', '$user_username', '$enc_pass')";
+        $insert = "INSERT INTO users (user_name, user_phone, user_email, user_username, user_pass, role_id)
+                   VALUES ('$user_name', '$user_phone', '$user_email', '$user_username', '$user_pass', '$user_role')";
 
         if(mysqli_query($conn, $insert)){
-            $_SESSION['success'] = "Registration Successful!";
+            
+           $_SESSION['success'] = "User Register Successfull!";
             header("Location: all-user.php");
-            $_SESSION['success'] = "User Register Successfull!";
+
             exit();
         }else{
             $message = "<div class='alert alert-danger'>Database Error: ".mysqli_error($conn)."</div>";
@@ -127,6 +129,36 @@ if(!empty($_POST)){
                                 <input type="password" class="form-control form_control" name="cpass">
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label col_form_label">
+                                User Role <span class="req_star">*</span>:
+                            </label>
+                            <div class="col-sm-4">
+                                <select class="form-control form_control" name="role">
+                                    <?php
+                                    $selr = "SELECT * FROM roles ORDER BY role_Id DESC ";
+                                    $QR = mysqli_query($conn,$selr);
+                                    while($role = mysqli_fetch_assoc($QR)){
+                                    ?>
+                                    <option value="<?php echo $role['role_id'] ?>"><?php echo $role['role_name'] ?></option>
+                                    <?PHP
+                                    }
+                                    ?>
+                                   
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label col_form_label">
+                                Photo:
+                            </label>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control form_control" name="">
+                            </div>
+                        </div>
+
 
                     </div>
 

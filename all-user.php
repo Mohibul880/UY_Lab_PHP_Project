@@ -16,11 +16,11 @@ get_sidebar();
         </div>
     </div>
         <?php
-    session_start(); // Always start the session
+    
     if (isset($_SESSION['success'])) {
         echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
         // Optional: unset the session variable to display the message only once
-        unset($_SESSION['success_message']);
+        unset($_SESSION['success']);
     }
     ?>
     <div class="row">
@@ -47,13 +47,13 @@ get_sidebar();
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Username</th>
-                                <th>Manage</th>
+                                <th>Role_Id</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                            
-                            $select = "SELECT * FROM users ORDER BY User_Id DESC";
+                            $select = "SELECT * FROM users NATURAL JOIN roles ORDER BY User_Id DESC";
                             $q = mysqli_query($conn, $select);
 
                             if($q && mysqli_num_rows($q) > 0){
@@ -64,6 +64,7 @@ get_sidebar();
                                 <td><?php echo $data['user_phone']; ?></td>
                                 <td><?php echo $data['user_email']; ?></td>
                                 <td><?php echo $data['user_username']; ?></td>
+                                <td><?php echo $data['role_name']; ?></td>
                                 <td>
                                     <div class="btn-group btn_group_manage" role="group">
                                         <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown">Manage</button>

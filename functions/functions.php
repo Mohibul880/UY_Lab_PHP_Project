@@ -1,4 +1,7 @@
-<?php
+
+
+
+<?php session_start();
 require_once "config.php";
 
 function get_header(){
@@ -23,3 +26,4 @@ if(!$conn){
     die("Database Connection Failed!");
 }
 ?>
+
