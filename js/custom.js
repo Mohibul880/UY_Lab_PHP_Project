@@ -1,5 +1,6 @@
+
 $(function(){
     setTimeout(function(){
-        $(".alert").hide();
+        $(".alert").slideUp();
     }, 3000);
 });
