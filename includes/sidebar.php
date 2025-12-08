@@ -2,8 +2,8 @@
             <div class="row">
                 <div class="col-md-2 sidebar_part">
                     <div class="user_part">
-                        <img class="" src="images/avatar.png" alt="avatar"/>
-                        <h5>Abir Mahamud</h5>
+                        <img class="" src="images/logo.jpg" alt="avatar"/>
+                        <h5>MS Gadget Planet</h5>
                         <p><i class="fas fa-circle"></i> Online</p>
                     </div>
                     <div class="menu">

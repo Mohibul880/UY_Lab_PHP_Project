@@ -18,7 +18,7 @@ get_sidebar();
                     </div>
                     <div class="row">
                         <div class="col-md-12 welcome_part">
-                            <p><span>Welcome Mr.</span> Abir Mahamud</p>
+                            <p><span>Welcome TO</span> MS Gadget Planet</p>
                         </div>
                     </div>
                 </div>

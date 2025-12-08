@@ -17,8 +17,8 @@
                 <div class="col-md-3 top_right_menu text-end">
                     <div class="dropdown">
                       <button class="btn dropdown-toggle top_right_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          <img src="images/avatar.png" class="img-fluid">
-                          Abir Mahamud
+                          <img src="images/Logo.jpg" class="img-fluid">
+                          MS Gadget Planet
                       </button>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user-tie"></i> My Profile</a></li>
