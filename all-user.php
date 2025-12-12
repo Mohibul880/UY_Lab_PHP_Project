@@ -19,7 +19,7 @@ get_sidebar();
     
     if (isset($_SESSION['success'])) {
         echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
-        // Optional: unset the session variable to display the message only once্
+        // Optional: unset the session variable to display the message only  once
         unset($_SESSION['success']);
     }
     ?>
